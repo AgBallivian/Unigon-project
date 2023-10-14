@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CenterContoller : MonoBehaviour
 {
+    private void OnTriggerEnter2D(Collider2D other) {
+        Destroy(other.gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {

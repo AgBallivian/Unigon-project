@@ -33,9 +33,12 @@ public class RowController : MonoBehaviour
     }
         // Instance of the prefab
     public void SpawnObject()
-    {   
+    {      
+        //Spaw in position of row
         Vector3 spawnPos = new Vector3(
-            
+            transform.position.x,
+            transform.position.y,
+            0
         );
         GameObject objectSpawn = DeathSpawn;
         Instantiate(objectSpawn, spawnPos, Quaternion.identity);
