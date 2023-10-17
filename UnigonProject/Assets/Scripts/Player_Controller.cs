@@ -1,9 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Controller : MonoBehaviour
 {
+    //Health System
+    public int health;
+    public int numOfHearts;
+
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+
     public float speed = 650f;
 
     float movement;
@@ -12,11 +21,49 @@ public class Player_Controller : MonoBehaviour
     Vector3 position = new Vector3(0, -3, 0);
     void Update(){
         movement = Input.GetAxisRaw("Horizontal");
+        
+        //heartDisplay
+        heartsDisplay();
+
     }
 
     void FixedUpdate (){
         //Rotate around the custom position
         transform.RotateAround(position, Vector3.forward, movement * Time.fixedDeltaTime * -speed);
         
+    }
+    //Display the health system
+    void heartsDisplay(){
+        
+        if(health > numOfHearts){
+            health = numOfHearts;
+        }
+        for(int i = 0; i < hearts.Length; i++){
+            if(i < health){
+                hearts[i].sprite = fullHeart;
+            }else{
+                hearts[i].sprite = emptyHeart;
+            }
+            if(i < numOfHearts){
+                hearts[i].enabled = true;
+            }else{
+                hearts[i].enabled = false;
+            }
+        }
+    }
+
+    //Health System
+    public void hit(){
+        health--;
+        if(health <= 0){
+            death();
+        }
+    }
+
+    public void death(){
+        //placeholder for death animation 
+        Debug.Log("Player is dead");
+        //After this it should be send to a retry screen or back to the menu
+
     }
 }

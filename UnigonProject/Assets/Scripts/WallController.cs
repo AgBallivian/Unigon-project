@@ -6,15 +6,7 @@ public class WallController : MonoBehaviour
 {
     [SerializeField] float speed = 5f;
     private float scaleFactor = 0.5f;
-    private WallPrefabController wallPrefabController;
-
-    void Start(){
-        // Find controller without FindObjectOfType
-        wallPrefabController = GameObject.Find("WallPrefabController").GetComponent<WallPrefabController>();
-        if (wallPrefabController == null){
-            Debug.LogError("WallPrefabController not found");
-        }
-    }
+    private float maxScale = 5.0f; // Set your desired maximum scale value here
 
     void Update()
     {
@@ -34,20 +26,14 @@ public class WallController : MonoBehaviour
         // Scale factor
         float actualScaleFactor = distance * scaleFactor;
 
+        // Clamp the scale to the maximum value
+        actualScaleFactor = Mathf.Clamp(actualScaleFactor, 0f, maxScale);
+
         // Update the scale of the object in all directions
-        transform.localScale = new Vector3(actualScaleFactor, actualScaleFactor*0.7f, actualScaleFactor);
+        transform.localScale = new Vector3(actualScaleFactor, actualScaleFactor * 0.7f, actualScaleFactor);
 
         // Move towards the center
         Vector3 newPosition = transform.position + direction * speed * Time.deltaTime;
         transform.position = newPosition;
     }
-
-    private void OnDestroy(){
-        //Print on console  
-        Debug.Log("Wall destroyed, spawning new wall");
-        if (wallPrefabController != null){
-            wallPrefabController.SpawnWall(transform.position, transform.rotation);
-        }
-    }
-
 }
