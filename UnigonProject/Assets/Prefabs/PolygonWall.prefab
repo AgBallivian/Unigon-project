@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sides: 6
   sidesToCreate: 5
-  radius: 10
+  radius: 2
   sideWidth: 0.2
 --- !u!114 &617073276799317213
 MonoBehaviour:
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 155471925637210549}
-  shrinkSpeed: 1
+  shrinkSpeed: 0.6
 --- !u!120 &8810752858238988039
 LineRenderer:
   serializedVersion: 2
