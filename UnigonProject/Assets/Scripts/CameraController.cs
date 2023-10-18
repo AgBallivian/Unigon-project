@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform player;  // Reference to the player's transform
-    public float rotationSpeed = 5f;  // Adjust this to control camera rotation speed
+
+    public Transform player;  
+    public float rotationSpeed = 5f;  //I think is not necesary
+    
+    public float shakeDuration = 0.5f;
 
     void Update()
     {
@@ -22,5 +25,16 @@ public class CameraController : MonoBehaviour
         // Optionally, you can rotate the camera around the player
         float horizontalInput = Input.GetAxis("Horizontal");
         transform.RotateAround(playerPos, Vector3.up, horizontalInput * rotationSpeed * Time.deltaTime);
+    }
+
+    public IEnumerator Shaking(){
+        float elapsedTime = 0f;
+        while (elapsedTime < shakeDuration){
+            Vector3 playerPos = player.position;
+            Quaternion playerRot = player.rotation;
+            elapsedTime += Time.deltaTime;
+            transform.position = playerPos + playerRot * new Vector3(2, 0, -10) + Random.insideUnitSphere * .1f;
+            yield return null;
+        }
     }
 }

@@ -12,7 +12,7 @@ public class PolygonController : MonoBehaviour
     void Start()
     {
         rb.rotation = Random.Range(0f, 360f);
-        transform.localScale = Vector3.one * 10f;
+        transform.localScale = Vector3.one * 5f;
     }
 
     // Update is called once per frame
