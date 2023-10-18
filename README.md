@@ -11,7 +11,7 @@ The basic gameplay loop of Unigon can be broken down into two parts: Dodge, and 
 - [x] Basic movement
 - [_] Advanced movement (Special moves, etc.)
 - [x] obstacle generation: This feature was the most work on and its future proof with posibilities to generate obstacles in a more advanced and modular way.
-- [x] Basic level generation
+- [x] Basic level generation: 6 Simple phases that are randomly generated.
 - [_] Advanced level generation (Set Patterns, etc.)
 
 The basic gameplay loop is complete. The player can move and avoid obstacles. Obstacles are generated in a modular way, so that we can add more obstacles in the future with pseudo-randomly generated set patterns.
