@@ -500,7 +500,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 996372158}
-  rotationSpeed: 5
   shakeDuration: 1
 --- !u!1 &629132298
 GameObject:
@@ -1893,7 +1892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.20254359}
   m_AnchorMax: {x: 0.5, y: 0.20254359}
-  m_AnchoredPosition: {x: 0, y: 141.8}
+  m_AnchoredPosition: {x: 0, y: 206.30003}
   m_SizeDelta: {x: 60.8, y: 32.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1510069600
@@ -1929,7 +1928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_AnchorMin: {x: 0.5, y: 0.20254359}
   m_AnchorMax: {x: 0.5, y: 0.20254359}
-  m_AnchoredPosition: {x: 0.51, y: 142.4}
+  m_AnchoredPosition: {x: 0.51, y: 206.90002}
   m_SizeDelta: {x: 1.02, y: 1.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1510069602
@@ -2097,7 +2096,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.21400002}
   m_AnchorMax: {x: 0.5, y: 0.24869688}
-  m_AnchoredPosition: {x: 0, y: 142.59998}
+  m_AnchoredPosition: {x: 0, y: 207.1}
   m_SizeDelta: {x: 60.15, y: -0.2999878}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2007332527

@@ -6,7 +6,6 @@ public class CameraController : MonoBehaviour
 {
 
     public Transform player;  
-    public float rotationSpeed = 5f;  //I think is not necesary
     
     public float shakeDuration = 0.5f;
 
@@ -17,14 +16,14 @@ public class CameraController : MonoBehaviour
         Quaternion playerRot = player.rotation;
 
         // Set the camera position to follow the player
-        transform.position = playerPos + playerRot * new Vector3(2, 0, -10);  // Adjust the values as needed
+        transform.position = playerPos + playerRot * new Vector3(0, 0, -10);  // Adjust the values as needed
 
         // Tilt the camera to match the player's rotation
         transform.rotation = Quaternion.LookRotation(playerPos - transform.position, playerRot * Vector3.up);
 
         // Optionally, you can rotate the camera around the player
         float horizontalInput = Input.GetAxis("Horizontal");
-        transform.RotateAround(playerPos, Vector3.up, horizontalInput * rotationSpeed * Time.deltaTime);
+        transform.RotateAround(playerPos, Vector3.up, horizontalInput * Time.deltaTime);
     }
 
     public IEnumerator Shaking(){
@@ -33,7 +32,7 @@ public class CameraController : MonoBehaviour
             Vector3 playerPos = player.position;
             Quaternion playerRot = player.rotation;
             elapsedTime += Time.deltaTime;
-            transform.position = playerPos + playerRot * new Vector3(2, 0, -10) + Random.insideUnitSphere * .1f;
+            transform.position = playerPos + playerRot * new Vector3(0, 0, -10) + Random.insideUnitSphere * .1f;
             yield return null;
         }
     }

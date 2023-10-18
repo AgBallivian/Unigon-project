@@ -15,6 +15,6 @@ public class DeathScreenHandler : MonoBehaviour
         SceneManager.LoadScene("GameScene1");
     }
     public void QuitMenu(){
-        SceneManager.LoadScene("MainMenu");   
+        SceneManager.LoadScene("Main Menu");   
     } 
 }

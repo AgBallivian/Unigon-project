@@ -16,7 +16,7 @@ public class PolygonController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.localScale -= Vector3.one * shrinkSpeed * Time.deltaTime;
         if(transform.localScale.x <= .05f)
