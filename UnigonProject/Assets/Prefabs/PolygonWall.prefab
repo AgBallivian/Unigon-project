@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 417200123043711413}
   - component: {fileID: 7269283945084902199}
   - component: {fileID: 155471925637210549}
+  - component: {fileID: -646157653544268014}
   m_Layer: 0
   m_Name: PolygonWall
   m_TagString: Enemy
@@ -316,3 +317,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-646157653544268014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068321807140516608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9db68aca8476f0428099c6df74508f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phase1Time: 14
+  phase2Time: 28
+  phase3Time: 50
+  phase4Time: 78
+  colorChangeSpeed: 0.005
+  hue: 0.5
+  goingUp: 1
