@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player_Controller : MonoBehaviour
 {
@@ -63,7 +64,8 @@ public class Player_Controller : MonoBehaviour
     public void death(){
         //placeholder for death animation 
         Debug.Log("Player is dead");
-        //After this it should be send to a retry screen or back to the menu
+        //After this it should be send to a retry screen or back to the deathScreen
+        SceneManager.LoadScene("DeathScreen");
 
     }
 }

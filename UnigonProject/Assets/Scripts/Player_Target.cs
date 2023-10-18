@@ -18,6 +18,8 @@ public class Player_Target : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("Enemy")){
             playerController.hit();
+            //Make Hit sound
+            GetComponent<AudioSource>().Play();
             //Call the camera shake function
             StartCoroutine(camera.GetComponent<CameraController>().Shaking());
         }
