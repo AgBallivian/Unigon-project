@@ -13,6 +13,7 @@ public class Player_Controller : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public bool GodMode = false;
 
     public float speed = 650f;
 
@@ -56,7 +57,7 @@ public class Player_Controller : MonoBehaviour
     //Health System
     public void hit(){
         health--;
-        if(health <= 0){
+        if(health <= 0 && !GodMode){
             death();
         }
     }

@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 155471925637210549}
-  shrinkSpeed: 0.6
+  shrinkSpeed: 0.7
 --- !u!120 &8810752858238988039
 LineRenderer:
   serializedVersion: 2

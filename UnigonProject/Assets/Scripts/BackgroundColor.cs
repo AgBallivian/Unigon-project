@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BackgroundColor : MonoBehaviour
 {
-    [SerializeField] float phase1Time = 14.0f;
-    [SerializeField] float phase2Time = 28.0f;
-    [SerializeField] float phase3Time = 50.0f;
-    [SerializeField] float phase4Time = 78.0f;
+    private float phase1Time = 15.0f;
+    private float phase2Time = 20.0f;
+    private float phase3Time = 40.0f;
+    private float phase4Time = 65.0f;
+    private float phase5Time = 77.0f;
     [SerializeField] float colorChangeSpeed = 0.005f;
     public float hue = 0.5f;
     public bool goingUp = true;
@@ -55,21 +56,96 @@ public class BackgroundColor : MonoBehaviour
         }
         
         //Hue / Saturation / Value
-        Color newColor = Color.HSVToRGB(hue, 0.6f, 0.4f);
+        Color newColor = Color.HSVToRGB(hue, 0.6f, 0.5f);
 
         // Apply the new color to the SpriteRenderer
         GetComponent<SpriteRenderer>().color = newColor;
     }
     void phase2(){
-
+        //Make Hue go from the values of red and orange
+        //orange = 0.08333333f
+        //red = 0.0f
+        if (goingUp){
+            if (hue > 0.08333333f){
+                goingUp = false;
+            }
+            else{
+                hue += colorChangeSpeed;
+            }
+        }
+        else{
+            if (hue < 0.0f){
+                goingUp = true;
+            }
+            else{
+                hue -= colorChangeSpeed;
+            }
+        }
+        Color newColor = Color.HSVToRGB(hue, 0.6f, 0.5f);
+        GetComponent<SpriteRenderer>().color = newColor;
     }
     void phase3(){
-
+        if (goingUp){
+            if (hue > 0.2f){
+                goingUp = false;
+            }
+            else{
+                hue += colorChangeSpeed;
+            }
+        }
+        else{
+            if (hue < 0.08333333f){
+                goingUp = true;
+            }
+            else{
+                hue -= colorChangeSpeed;
+            }
+        }
+        Color newColor = Color.HSVToRGB(hue, 0.6f, 0.6f);
+        GetComponent<SpriteRenderer>().color = newColor;
     }
     void phase4(){
-
+        //Make Hue go from the values of purple and pink
+        //purple = 0.8333333f
+        //pink = 0.9166667f
+        if (goingUp){
+            if (hue > 0.9166667f){
+                goingUp = false;
+            }
+            else{
+                hue += colorChangeSpeed;
+            }
+        }
+        else{
+            if (hue < 0.8333333f){
+                goingUp = true;
+            }
+            else{
+                hue -= colorChangeSpeed;
+            }
+        }
+        Color newColor = Color.HSVToRGB(hue, hue, hue);
+        GetComponent<SpriteRenderer>().color = newColor;
     }
     void phase5(){
-
+        //Make Hue go from the values of all the colors
+        if (goingUp){
+            if (hue > 1.0f){
+                goingUp = false;
+            }
+            else{
+                hue += colorChangeSpeed*4;
+            }
+        }
+        else{
+            if (hue < 0.0f){
+                goingUp = true;
+            }
+            else{
+                hue -= colorChangeSpeed*4;
+            }
+        }
+        Color newColor = Color.HSVToRGB(hue, 0.9f, 0.8f);
+        GetComponent<SpriteRenderer>().color = newColor;
     }
 }

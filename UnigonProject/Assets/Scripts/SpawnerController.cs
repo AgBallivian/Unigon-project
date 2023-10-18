@@ -5,24 +5,73 @@ using UnityEngine;
 public class SpawnerController : MonoBehaviour
 {
     public GameObject polygonPrefab;
-    public int minSides = 3;
-    public int maxSides = 5;
+    public int minSides = 1;
+    public int maxSides = 2;
+
     
     //temporal Randomess (ADD PATTERNS NEXT UPDATE)
-    public float SpawnDelay = 1f;
-    
+    public float spawnDelay = 1f;
+    public float shrinkSpeed = 0.7f;
+
+    //Phase Timers
+    private float phase1Time = 10.0f;
+    private float phase2Time = 20.0f;
+    private float phase3Time = 50.0f;
+    private float phase4Time = 60.0f;
+    private float phase5Time = 75.0f;
+
     private float timer;
     private float globalTimer;
 
     void Update(){
         globalTimer += Time.deltaTime;
         timer += Time.deltaTime;
+        //Phase 2
+        if (globalTimer >= phase1Time && globalTimer < phase2Time){
+            Debug.Log("Phase 2" + globalTimer);
+            minSides = 3;
+            maxSides = 5;
+            spawnDelay = 0.9f;
+        }
+        //Phase 3
+        else if (globalTimer >= phase2Time && globalTimer < phase3Time){
+            Debug.Log("Phase 3" + globalTimer);
+            minSides = 2;
+            maxSides = 4;
+            spawnDelay = 0.6f;
+            shrinkSpeed = 1.1f;
+        }
+        //Phase 4
+        else if (globalTimer >= phase3Time && globalTimer < phase4Time){
+            Debug.Log("Phase 4" + globalTimer);
+            minSides = 5;
+            maxSides = 5;
+            spawnDelay = 1.1f;
+            shrinkSpeed = 1.7f;
+        }
+        //Phase 5
+        else if (globalTimer >= phase4Time && globalTimer < phase5Time){
+            Debug.Log("Phase 5" + globalTimer);
+            minSides = 1;
+            maxSides = 5;
+            spawnDelay = 0.55f;
+            shrinkSpeed = 1.2f;
+        }
+        //Phase 6
+        else if (globalTimer >= phase5Time){
+            Debug.Log("Phase 6" + globalTimer);
+            minSides = 3;
+            maxSides = 5;
+            spawnDelay = 0.5f;
+            shrinkSpeed = 1.7f;
+        }
 
-        if(timer >= SpawnDelay){
+        if(timer >= spawnDelay){
             SpawnObjects();
             timer = 0;
         }
     }
+
 
     private void SpawnObjects(){
         int polygonSides = polygonPrefab.GetComponent<PolygonSideGenerator>().sides;
@@ -52,6 +101,7 @@ public class SpawnerController : MonoBehaviour
         GameObject spawnedPolygon = Instantiate(polygonPrefab, spawnPosition, Quaternion.identity);
         spawnedPolygon.transform.RotateAround(spawnPosition, Vector3.forward, spawnAngle);
         spawnedPolygon.GetComponent<PolygonSideGenerator>().sidesToCreate = sides;
+        spawnedPolygon.GetComponent<PolygonController>().shrinkSpeed = shrinkSpeed;
     }
 
 }

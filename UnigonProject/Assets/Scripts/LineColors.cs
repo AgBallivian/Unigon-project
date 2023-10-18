@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class LineColors : MonoBehaviour
 {
-    [SerializeField] float phase1Time = 14.0f;
-    [SerializeField] float phase2Time = 28.0f;
-    [SerializeField] float phase3Time = 50.0f;
-    [SerializeField] float phase4Time = 78.0f;
+
     [SerializeField] float colorChangeSpeed = 0.005f;
     public float hue = 0.5f;
+    private float phase1Time = 10.0f;
+    private float phase2Time = 20.0f;
+    private float phase3Time = 50.0f;
+    private float phase4Time = 60.0f;
+    private float phase5Time = 75.0f;
     public bool goingUp = true;
     void Start(){
     }
@@ -61,7 +63,7 @@ public class LineColors : MonoBehaviour
         GetComponent<LineRenderer>().material.color = newColor;
     }
     void phase2(){
-
+        
     }
     void phase3(){
 
