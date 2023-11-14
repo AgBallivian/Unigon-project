@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerController : MonoBehaviour
+public class SpawnerControllerLvL2 : MonoBehaviour
 {
     public GameObject polygonPrefab;
-    public int minSides = 1;
-    public int maxSides = 2;
+    public int minSides = 4;
+    public int maxSides = 4;
 
     
     //temporal Randomess (ADD PATTERNS NEXT UPDATE)
@@ -15,7 +15,7 @@ public class SpawnerController : MonoBehaviour
 
     //Phase Timers
     private float phasechangeTime = 2.0f;
-    private float phase1Time = 10.0f;
+    private float phase1Time = 5.0f;
     private float phase2Time = 20.0f;
     private float phase3Time = 50.0f;
     private float phase4Time = 60.0f;
@@ -30,9 +30,9 @@ public class SpawnerController : MonoBehaviour
         //Phase 2
         if (globalTimer >= phase1Time && globalTimer < phase2Time){
             Debug.Log("Phase 2 " + globalTimer);
-            minSides = 3;
-            maxSides = 5;
-            spawnDelay = 0.9f;
+            minSides = 2;
+            maxSides = 2;
+            spawnDelay = 0.32f;
         }
         //delay in between phase
         else if (globalTimer >= phase2Time && globalTimer < phase2Time + phasechangeTime){
@@ -42,8 +42,8 @@ public class SpawnerController : MonoBehaviour
         //Phase 3
         else if (globalTimer >= phase2Time && globalTimer < phase3Time){
             Debug.Log("Phase 3" + globalTimer);
-            minSides = 2;
-            maxSides = 4;
+            minSides = 1;
+            maxSides = 6;
             spawnDelay = 0.6f;
             shrinkSpeed = 1.1f;
         }
