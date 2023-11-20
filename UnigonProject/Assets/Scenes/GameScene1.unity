@@ -662,9 +662,10 @@ GameObject:
   m_Component:
   - component: {fileID: 757718391}
   - component: {fileID: 757718390}
+  - component: {fileID: 757718392}
   m_Layer: 0
   m_Name: PolyWallsSpawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -676,7 +677,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757718389}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fef4d54e471edf9438847ded93060318, type: 3}
   m_Name: 
@@ -701,6 +702,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &757718392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757718389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df724acdcb960e449b7c0e80c6bd777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  polygonPrefab: {fileID: 9068321807140516608, guid: f01c1506e7ccda1468688becfa1a167d, type: 3}
+  shrinkSpeed: 0.7
+  polygonSides: 6
 --- !u!1 &769937747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1043,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7753694479053605364, guid: 9a277c0ed347aeb48a7e5378406178d3, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 37022da781d5ea24fac3f440bb3eecd2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8df7135c4762705429cc47c93a4adf5a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1691,7 +1707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1.52, y: -110.7}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1153982292

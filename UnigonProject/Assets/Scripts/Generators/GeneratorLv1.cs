@@ -35,16 +35,15 @@ public class GeneratorLv1 : MonoBehaviour
             StartCoroutine(Pattern3C());
             timer = 0;
         }
-        // Choose a random angle from the list
-        // int randomAngleIndex = Random.Range(0, possibleAngles.Count);
-        // float spawnAngle = possibleAngles[randomAngleIndex];
 
-        // Rotate around z-axis
-        // Quaternion spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle);
     }
     
     //Create Global patterns, so angles will be according to their position on the list
-
+        // Choose a random angle from the list
+        // int randomAngleIndex = Random.Range(0, possibleAngles.Count);
+        // float spawnAngle = possibleAngles[randomAngleIndex];
+        // Rotate around z-axis
+        // Quaternion spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle);
     //Patter 3-C
     private IEnumerator Pattern3C()
     {
