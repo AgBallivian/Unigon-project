@@ -32,7 +32,7 @@ public class GeneratorLv1 : MonoBehaviour
         timer += Time.deltaTime;
 
         if(timer >= patternchangeTime){
-            StartCoroutine(Pattern3C());
+            StartCoroutine(Pattern3C_COPY());
             timer = 0;
         }
 
@@ -44,6 +44,7 @@ public class GeneratorLv1 : MonoBehaviour
         // float spawnAngle = possibleAngles[randomAngleIndex];
         // Rotate around z-axis
         // Quaternion spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle);
+
     //Patter 3-C
     private IEnumerator Pattern3C()
     {
@@ -65,6 +66,27 @@ public class GeneratorLv1 : MonoBehaviour
         SpawnWall(polygonSides - 1, spawnRotation3);
 
     }
+        private IEnumerator Pattern3C_COPY()
+    {
+        // Choose a random angle from the list
+        int randomAngleIndex = Random.Range(0, possibleAngles.Count);
+        float spawnAngle = possibleAngles[randomAngleIndex];
+        // Rotate around z-axis
+        Quaternion spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle);
+
+        //Spawn wall 1 of 3
+        SpawnWall(polygonSides - 1, spawnRotation);
+        yield return new WaitForSeconds(1.0f);
+        //Spawn wall 2 of 3
+        Quaternion spawnRotation2 = Quaternion.Euler(0f, 0f, spawnAngle + 90f);
+        SpawnWall(polygonSides - 1, spawnRotation2);
+        yield return new WaitForSeconds(1.0f);
+        //Spawn wall 3 of 3
+        Quaternion spawnRotation3 = Quaternion.Euler(0f, 0f, spawnAngle);
+        SpawnWall(polygonSides - 1, spawnRotation3);
+
+    }
+
 
     //Spawn the wall function 
     private void SpawnWall(int sides, Quaternion spawnRotation)
