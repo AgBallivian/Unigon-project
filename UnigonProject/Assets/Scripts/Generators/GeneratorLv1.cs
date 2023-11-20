@@ -15,7 +15,7 @@ public class GeneratorLv1 : MonoBehaviour
     private float globalTimer;
 
     private List<float> possibleAngles = new List<float>();
-    public int polygonSides = 6;
+    public int polygonSides = 8;
 
     void Start(){
         //Create Posible angles to spawn the polygon (Regular Polygon)
@@ -32,7 +32,7 @@ public class GeneratorLv1 : MonoBehaviour
         timer += Time.deltaTime;
 
         if(timer >= patternchangeTime){
-            StartCoroutine(Pattern3C_COPY());
+            StartCoroutine(Pattern3C());
             timer = 0;
         }
 
@@ -55,46 +55,26 @@ public class GeneratorLv1 : MonoBehaviour
         Quaternion spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle);
 
         //Spawn wall 1 of 3
-        SpawnWall(polygonSides - 1, spawnRotation);
+        SpawnWall(polygonSides, polygonSides - 1, spawnRotation);
         yield return new WaitForSeconds(1.0f);
         //Spawn wall 2 of 3
         Quaternion spawnRotation2 = Quaternion.Euler(0f, 0f, spawnAngle + 90f);
-        SpawnWall(polygonSides - 1, spawnRotation2);
+        SpawnWall(polygonSides, polygonSides - 1, spawnRotation2);
         yield return new WaitForSeconds(1.0f);
         //Spawn wall 3 of 3
         Quaternion spawnRotation3 = Quaternion.Euler(0f, 0f, spawnAngle);
-        SpawnWall(polygonSides - 1, spawnRotation3);
+        SpawnWall(polygonSides, polygonSides - 1, spawnRotation3);
 
     }
-        private IEnumerator Pattern3C_COPY()
-    {
-        // Choose a random angle from the list
-        int randomAngleIndex = Random.Range(0, possibleAngles.Count);
-        float spawnAngle = possibleAngles[randomAngleIndex];
-        // Rotate around z-axis
-        Quaternion spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle);
-
-        //Spawn wall 1 of 3
-        SpawnWall(polygonSides - 1, spawnRotation);
-        yield return new WaitForSeconds(1.0f);
-        //Spawn wall 2 of 3
-        Quaternion spawnRotation2 = Quaternion.Euler(0f, 0f, spawnAngle + 90f);
-        SpawnWall(polygonSides - 1, spawnRotation2);
-        yield return new WaitForSeconds(1.0f);
-        //Spawn wall 3 of 3
-        Quaternion spawnRotation3 = Quaternion.Euler(0f, 0f, spawnAngle);
-        SpawnWall(polygonSides - 1, spawnRotation3);
-
-    }
-
 
     //Spawn the wall function 
-    private void SpawnWall(int sides, Quaternion spawnRotation)
+    private void SpawnWall(int sides, int sidesToCreate, Quaternion spawnRotation)
     {
         Debug.Log("Angle of spawn: " + spawnRotation.eulerAngles.z);
         Vector3 spawnPosition = new Vector3(0f, -3f, 0f);
         GameObject spawnedPolygon = Instantiate(polygonPrefab, spawnPosition, spawnRotation);
-        spawnedPolygon.GetComponent<PolygonSideGenerator>().sidesToCreate = sides;
+        spawnedPolygon.GetComponent<PolygonSideGenerator>().sides = sides;
+        spawnedPolygon.GetComponent<PolygonSideGenerator>().sidesToCreate = sidesToCreate;
         spawnedPolygon.GetComponent<PolygonController>().shrinkSpeed = shrinkSpeed;
 
     }
