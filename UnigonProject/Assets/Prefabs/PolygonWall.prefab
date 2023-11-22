@@ -53,7 +53,7 @@ MonoBehaviour:
   sides: 6
   sidesToCreate: 5
   radius: 2
-  sideWidth: 0.2
+  sideWidth: 0.4
 --- !u!114 &617073276799317213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,10 +329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9db68aca8476f0428099c6df74508f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase1Time: 14
-  phase2Time: 28
-  phase3Time: 50
-  phase4Time: 78
   colorChangeSpeed: 0.005
   hue: 0.5
   goingUp: 1
