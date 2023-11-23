@@ -9,7 +9,7 @@ public class SpawnerController : MonoBehaviour
     public int maxSides = 2;
 
     
-    //temporal Randomess (ADD PATTERNS NEXT UPDATE)
+    //temporal Randomess (ADD PATTERNS NEXT UPDATE)a
     public float spawnDelay = 1f;
     public float shrinkSpeed = 0.7f;
 

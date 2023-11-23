@@ -16,12 +16,23 @@ public class Player_Target : MonoBehaviour
     //Player health
 
     void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Enemy")){
-            playerController.hit();
-            //Make Hit sound
-            GetComponent<AudioSource>().Play();
-            //Call the camera shake function
-            StartCoroutine(camera.GetComponent<CameraController>().Shaking());
+    if(other.CompareTag("Enemy")){
+        Vector2 impactDirection = (other.transform.position - transform.position).normalized;
+        Vector2 playerFront = transform.right; // Asume que el frente del jugador es su derecha
+
+        float dotProduct = Vector2.Dot(impactDirection, playerFront);
+        Debug.Log(dotProduct);
+        if(dotProduct > 0){
+            Debug.Log("Impacto frontal");
+        } else {
+            Debug.Log("Impacto lateral");
         }
+
+        playerController.hit();
+        //Make Hit sound
+        GetComponent<AudioSource>().Play();
+        //Call the camera shake function
+        StartCoroutine(camera.GetComponent<CameraController>().Shaking());
+    }
     }
 }

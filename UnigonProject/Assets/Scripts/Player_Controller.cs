@@ -15,7 +15,8 @@ public class Player_Controller : MonoBehaviour
     public Sprite emptyHeart;
     public bool GodMode = false;
 
-    public float speed = 650f;
+    public float speed = 350f;
+    public float acceleration = 5f;
 
     float movement;
 
@@ -24,16 +25,24 @@ public class Player_Controller : MonoBehaviour
     void Update(){
         movement = Input.GetAxisRaw("Horizontal");
         
+        if (movement == 0) {
+        currentSpeed = 0;
+        }
         //heartDisplay
         heartsDisplay();
 
     }
-
-    void FixedUpdate (){
-        //Rotate around the custom position
-        transform.RotateAround(position, Vector3.forward, movement * Time.fixedDeltaTime * -speed);
-        
+private float currentSpeed = 0f;
+void FixedUpdate (){
+    // Aumenta la velocidad actual hasta la velocidad máxima
+    if (currentSpeed < speed) {
+        currentSpeed += acceleration * Time.fixedDeltaTime;
+        currentSpeed = Mathf.Min(currentSpeed, speed); // Asegúrate de que la velocidad actual no supere la velocidad máxima
     }
+
+    // Gira alrededor de la posición personalizada
+    transform.RotateAround(position, Vector3.forward, movement * Time.fixedDeltaTime * -currentSpeed);
+}
     //Display the health system
     void heartsDisplay(){
         
