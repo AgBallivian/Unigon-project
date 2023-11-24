@@ -32,17 +32,14 @@ public class Player_Controller : MonoBehaviour
         heartsDisplay();
 
     }
-private float currentSpeed = 0f;
-void FixedUpdate (){
-    // Aumenta la velocidad actual hasta la velocidad máxima
-    if (currentSpeed < speed) {
-        currentSpeed += acceleration * Time.fixedDeltaTime;
-        currentSpeed = Mathf.Min(currentSpeed, speed); // Asegúrate de que la velocidad actual no supere la velocidad máxima
+    private float currentSpeed = 0f;
+    void FixedUpdate (){
+        if (currentSpeed < speed) {
+            currentSpeed += acceleration * Time.fixedDeltaTime;
+            currentSpeed = Mathf.Min(currentSpeed, speed); 
+        }
+        transform.RotateAround(position, Vector3.forward, movement * Time.fixedDeltaTime * -currentSpeed);
     }
-
-    // Gira alrededor de la posición personalizada
-    transform.RotateAround(position, Vector3.forward, movement * Time.fixedDeltaTime * -currentSpeed);
-}
     //Display the health system
     void heartsDisplay(){
         

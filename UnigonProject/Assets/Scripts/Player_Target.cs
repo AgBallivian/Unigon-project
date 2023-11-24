@@ -20,13 +20,13 @@ public class Player_Target : MonoBehaviour
         Vector2 impactDirection = (other.transform.position - transform.position).normalized;
         Vector2 playerFront = transform.right; // Asume que el frente del jugador es su derecha
 
-        float dotProduct = Vector2.Dot(impactDirection, playerFront);
-        Debug.Log(dotProduct);
-        if(dotProduct > 0){
-            Debug.Log("Impacto frontal");
-        } else {
-            Debug.Log("Impacto lateral");
-        }
+        // float dotProduct = Vector2.Dot(impactDirection, playerFront);
+        // Debug.Log(dotProduct);
+        // if(dotProduct > 0){
+        //     Debug.Log("Impacto frontal");
+        // } else {
+        //     Debug.Log("Impacto lateral");
+        // }
 
         playerController.hit();
         //Make Hit sound

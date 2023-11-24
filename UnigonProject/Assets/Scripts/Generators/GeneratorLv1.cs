@@ -5,7 +5,7 @@ using UnityEngine;
 public class GeneratorLv1 : MonoBehaviour
 {
     public GameObject polygonPrefab;
-    public float patternchangeTime = 10.0f;
+    public float patternchangeTime = 2.0f;
     public float patternSpeedTime = 0.5f;
 
     //temporal Randomess (ADD PATTERNS NEXT UPDATE)
@@ -21,9 +21,11 @@ public class GeneratorLv1 : MonoBehaviour
     void Start(){
         //Create Posible angles to spawn the polygon (Regular Polygon)
         int polygonSides = polygonPrefab.GetComponent<PolygonSideGenerator>().sides;
-        float angleStep = 360f / polygonSides; 
+        float angleStep = 360f / (polygonSides*2); 
+        Debug.Log(angleStep + " " + polygonSides*2);
         for (int i = 0; i < polygonSides; i++)
         {
+            Debug.Log(angleStep*i);
             possibleAngles.Add(angleStep * i);
         }
     }
@@ -34,7 +36,7 @@ public class GeneratorLv1 : MonoBehaviour
 
         if(timer >= patternchangeTime){
             //TODO: Optimizar le elecion random de pattrones (?)
-            int randomPattern = Random.Range(0, 3);
+            int randomPattern = Random.Range(3, 4);
             // int randomPattern = 0;
 
             //Cambiarlo a un switch case
@@ -48,6 +50,9 @@ public class GeneratorLv1 : MonoBehaviour
             }
             if(randomPattern == 2){
                 StartCoroutine(patt_alt2s());
+            }
+            if(randomPattern == 3){
+                StartCoroutine(patt_spiral());
             }
             
             timer = 0;
@@ -162,9 +167,27 @@ public class GeneratorLv1 : MonoBehaviour
 
     private IEnumerator patt_spiral()
     {
+        int randomAngleIndex = Random.Range(0, possibleAngles.Count);
+        float spawnAngle = possibleAngles[randomAngleIndex];
+        Quaternion spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle); 
+        int indx = randomAngleIndex;
+
+        for(int i = 0; i<polygonSides; i++){
+
+            Debug.Log("spawn angle: " + spawnAngle + " ; i: " + i);
+            spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle); 
+            SpawnWall(polygonSides, polygonSides-1, spawnRotation);
+
+            yield return new WaitForSeconds(0.8f);
+            indx = indx + 1;
+            if (indx >= possibleAngles.Count){
+                indx = 0;
+            }
+            spawnAngle = possibleAngles[indx];
+        }
 
         //DELAY SO PATTERNS DON'T OVERLAP   
-        //TODO: OPTIMIZAR ESTA WEA
+        //TODO: OPTIMIZAR ESTA WEA NO FUNCIONA
         yield return new WaitForSeconds(patternchangeTime);
     }
 
