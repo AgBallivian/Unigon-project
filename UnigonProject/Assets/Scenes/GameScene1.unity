@@ -150,7 +150,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191515940}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -713,7 +713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   polygonPrefab: {fileID: 9068321807140516608, guid: f01c1506e7ccda1468688becfa1a167d, type: 3}
-  patternchangeTime: 4.5
+  patternchangeTime: 5
   patternSpeedTime: 1
   shrinkSpeed: 0.7
   polygonSides: 6

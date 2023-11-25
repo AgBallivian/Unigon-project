@@ -52,8 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sides: 6
   sidesToCreate: 5
-  radius: 2
-  sideWidth: 0.4
+  radius: 2.5
+  sideWidth: 0.3
 --- !u!114 &617073276799317213
 MonoBehaviour:
   m_ObjectHideFlags: 0

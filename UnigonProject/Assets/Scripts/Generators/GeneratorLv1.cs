@@ -6,7 +6,7 @@ public class GeneratorLv1 : MonoBehaviour
 {
     public GameObject polygonPrefab;
     public float patternchangeTime = 2.0f;
-    public float patternSpeedTime = 0.5f;
+    public float patternSpeedTime = 0.8f;
 
     //temporal Randomess (ADD PATTERNS NEXT UPDATE)
     // public float spawnDelay = 1f;
@@ -36,24 +36,31 @@ public class GeneratorLv1 : MonoBehaviour
 
         if(timer >= patternchangeTime){
             //TODO: Optimizar le elecion random de pattrones (?)
-            int randomPattern = Random.Range(3, 4);
+            int randomPattern = Random.Range(0, 5);
             // int randomPattern = 0;
 
             //Cambiarlo a un switch case
             if(randomPattern == 0){
-                // Debug.Log("Spawning 111 ; Time: " + patternchangeTime);
+                Debug.Log("Spawning 2on2 ;");
                 StartCoroutine(patt_2on2());
             }
             if(randomPattern == 1){
-                // Debug.Log("Spawning 3c ; Time: " + patternchangeTime);
+                Debug.Log("Spawning 3c ;");
                 StartCoroutine(patt_3c());
             }
             if(randomPattern == 2){
+                Debug.Log("Spawning alt2s ;");
                 StartCoroutine(patt_alt2s());
             }
             if(randomPattern == 3){
+                Debug.Log("Spawning Spiral;");
                 StartCoroutine(patt_spiral());
             }
+            if(randomPattern == 4){
+                Debug.Log("Spawning rand ;");
+                StartCoroutine(patt_rand());
+            }
+            
             
             timer = 0;
         }
@@ -145,7 +152,6 @@ public class GeneratorLv1 : MonoBehaviour
         }
         for(int i = 0; i<polygonSides/2; i++){
             int now = indx;
-            Debug.Log("spawn angle: " + spawnAngle + " ; i: " + i);
             spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle); 
             SpawnWall(polygonSides, 2, spawnRotation);
             spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle+90f); 
@@ -174,16 +180,38 @@ public class GeneratorLv1 : MonoBehaviour
 
         for(int i = 0; i<polygonSides; i++){
 
-            Debug.Log("spawn angle: " + spawnAngle + " ; i: " + i);
             spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle); 
             SpawnWall(polygonSides, polygonSides-1, spawnRotation);
 
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(patternSpeedTime);
             indx = indx + 1;
             if (indx >= possibleAngles.Count){
                 indx = 0;
             }
             spawnAngle = possibleAngles[indx];
+        }
+
+        //DELAY SO PATTERNS DON'T OVERLAP   
+        //TODO: OPTIMIZAR ESTA WEA NO FUNCIONA
+        yield return new WaitForSeconds(patternchangeTime+3.0f);
+    }
+
+    private IEnumerator patt_rand()
+    {
+        
+        int randomAngleIndex = Random.Range(0, possibleAngles.Count);
+        float spawnAngle = possibleAngles[randomAngleIndex];
+        Quaternion spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle); 
+        int wallscount = Random.Range(1, polygonSides);
+        for(int i = 0; i<3; i++){
+
+            spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle); 
+            SpawnWall(polygonSides, wallscount, spawnRotation);
+
+            yield return new WaitForSeconds(patternSpeedTime);
+            randomAngleIndex = Random.Range(0, possibleAngles.Count);
+            spawnAngle = possibleAngles[randomAngleIndex];
+            wallscount = Random.Range(1, polygonSides);
         }
 
         //DELAY SO PATTERNS DON'T OVERLAP   
