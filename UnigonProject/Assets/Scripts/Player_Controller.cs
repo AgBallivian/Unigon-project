@@ -24,7 +24,7 @@ public class Player_Controller : MonoBehaviour
     Vector3 position = new Vector3(0, -3, 0);
     void Update(){
         movement = Input.GetAxisRaw("Horizontal");
-        
+
         if (movement == 0) {
         currentSpeed = 0;
         }
@@ -32,6 +32,7 @@ public class Player_Controller : MonoBehaviour
         heartsDisplay();
 
     }
+
     private float currentSpeed = 0f;
     void FixedUpdate (){
         if (currentSpeed < speed) {
