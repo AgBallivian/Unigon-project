@@ -140,5 +140,20 @@ public class DrawPolygon : MonoBehaviour
         }
         return newTriangles.ToArray();
     }
+
+    public void SetColors(Color color1, Color color2)
+    {
+        this.color1 = color1;
+        this.color2 = color2;
+        // Llama a la función correspondiente para actualizar los colores
+        if (isFilled)
+        {
+            drawFilled(sides, radius);
+        }
+        else
+        {
+            drawHollow(sides, radius, centerRadius);
+        }
+    }
 }
 //Thanks to this tutorial: https://www.youtube.com/watch?v=YG-gIX_OvSE&ab_channel=ZeroKelvinTutorials
