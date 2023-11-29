@@ -9,15 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6561457733539401504}
-  - component: {fileID: 6666401354160421333}
-  - component: {fileID: 617073276799317213}
+  - component: {fileID: 4501199107649368657}
+  - component: {fileID: -5812191697322843750}
   - component: {fileID: 8810752858238988039}
   - component: {fileID: 417200123043711413}
-  - component: {fileID: 7269283945084902199}
-  - component: {fileID: 155471925637210549}
   - component: {fileID: -646157653544268014}
+  - component: {fileID: 7686993579339088287}
   m_Layer: 0
-  m_Name: PolygonWall
+  m_Name: PolygonShadow
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +37,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6666401354160421333
+--- !u!114 &4501199107649368657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,14 +46,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 9068321807140516608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db1898b86a87b4438dd3460de405c4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d552993b0832b241b4d0dcf5d5306a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sides: 6
   sidesToCreate: 5
-  radius: 2.5
-  sideWidth: 0.3
---- !u!114 &617073276799317213
+  radius: 2.3
+  sideWidth: 0.2
+--- !u!114 &-5812191697322843750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,12 +62,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9068321807140516608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dc1ffad99de6a6428a445e1a2154217, type: 3}
+  m_Script: {fileID: 11500000, guid: b5984921241214a40ace2983748081de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 155471925637210549}
-  shadowPrefab: {fileID: 9068321807140516608, guid: b5f112c9a6a1d5f4b8ef74f1462e290c, type: 3}
-  ShadowCount: 1
   shrinkSpeed: 0.7
 --- !u!120 &8810752858238988039
 LineRenderer:
@@ -152,8 +148,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.142, g: 0.142, b: 0.142, a: 1}
+      key1: {r: 0.142, g: 0.142, b: 0.142, a: 1}
       key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -181,7 +177,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 1
+    numCapVertices: 0
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
@@ -243,56 +239,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!68 &7269283945084902199
-EdgeCollider2D:
+--- !u!114 &-646157653544268014
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9068321807140516608}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.1
-  m_Points:
-  - {x: 10, y: 0}
-  - {x: 4.9999995, y: 8.6602545}
-  - {x: 4.9999995, y: 8.6602545}
-  - {x: -5.0000005, y: 8.660254}
-  - {x: -5.0000005, y: 8.660254}
-  - {x: -10, y: -0.0000008742278}
-  - {x: -10, y: -0.0000008742278}
-  - {x: -4.999999, y: -8.6602545}
-  - {x: -4.999999, y: -8.6602545}
-  - {x: 4.999999, y: -8.6602545}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
---- !u!50 &155471925637210549
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9db68aca8476f0428099c6df74508f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorChangeSpeed: 0.005
+  hue: 0.5
+  goingUp: 1
+--- !u!50 &7686993579339088287
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -300,7 +262,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9068321807140516608}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -319,18 +281,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-646157653544268014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9068321807140516608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9db68aca8476f0428099c6df74508f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorChangeSpeed: 0.005
-  hue: 0.5
-  goingUp: 1
