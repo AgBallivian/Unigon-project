@@ -5,11 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuHandler : MonoBehaviour
 {
-    public void PlayGame(){
-        SceneManager.LoadScene("GameScene1");
+    public AudioSource TitleAudio;
+    public AudioSource Soundy;
+
+    void Start(){
+        TitleAudio.Play();
+        Soundy.Play();
     }
-    public void PlayGameHARD(){
-        SceneManager.LoadScene("GameScene2");
+
+    public void LevelSelection(){
+        SceneManager.LoadScene("Level Selection");
+    }
+
+    public void Level1(){
+        // SceneManager.LoadScene("Level1");
+    }
+    public void titleScreen(){
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void Settings(){
+        SceneManager.LoadScene("Settings");
     }
 
     public void QuitGame(){
