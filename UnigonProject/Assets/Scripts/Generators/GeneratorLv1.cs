@@ -7,6 +7,7 @@ public class GeneratorLv1 : MonoBehaviour
     public GameObject polygonPrefab;
     public float patternchangeTime = 2.0f;
     public float patternSpeedTime = 0.8f;
+    public float timerStartBuffer = 5.0f;
 
     //temporal Randomess (ADD PATTERNS NEXT UPDATE)
     // public float spawnDelay = 1f;
@@ -29,6 +30,7 @@ public class GeneratorLv1 : MonoBehaviour
             Debug.Log(angleStep*i);
             possibleAngles.Add(angleStep * i);
         }
+        timer = timerStartBuffer;
     }
 
     void FixedUpdate(){
