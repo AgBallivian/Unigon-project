@@ -14,6 +14,7 @@ public class Player_Controller : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public bool GodMode = false;
+    public bool canFlip = false;
 
     public float speed = 350f;
     public float acceleration = 5f;
@@ -24,6 +25,11 @@ public class Player_Controller : MonoBehaviour
     Vector3 position = new Vector3(0, -3, 0);
     void Update(){
         movement = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetKeyDown(KeyCode.Space) && canFlip){
+            Debug.Log("Spacebar pressed");
+            flip();
+        }
 
         if (movement == 0) {
         currentSpeed = 0;
@@ -41,6 +47,13 @@ public class Player_Controller : MonoBehaviour
         }
         transform.RotateAround(position, Vector3.forward, movement * Time.fixedDeltaTime * -currentSpeed);
     }
+
+    //change side
+    void flip(){
+        //flip the player to the other side of the rotate point
+        transform.RotateAround(position, Vector3.forward, 180);
+    }
+
     //Display the health system
     void heartsDisplay(){
         
