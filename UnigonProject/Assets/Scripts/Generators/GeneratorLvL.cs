@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneratorLv1 : MonoBehaviour
+public class GeneratorLvL : MonoBehaviour
 {
     public GameObject polygonPrefab;
-    public float patternchangeTime = 2.0f;
-    public float patternSpeedTime = 0.8f;
+    public float patternchangeTime = 5.0f;
+    public float patternSpeedTime = 1.0f;
     public float timerStartBuffer = 5.0f;
 
-    //temporal Randomess (ADD PATTERNS NEXT UPDATE)
-    // public float spawnDelay = 1f;
     public float shrinkSpeed = 0.7f;
 
     private float timer;
     private float globalTimer;
-    private bool patternFinish = true;
+    public bool patternFinish = true;
 
     private List<float> possibleAngles = new List<float>();
     public int polygonSides = 8;
@@ -24,10 +22,10 @@ public class GeneratorLv1 : MonoBehaviour
         //Create Posible angles to spawn the polygon (Regular Polygon)
         int polygonSides = polygonPrefab.GetComponent<PolygonSideGenerator>().sides;
         float angleStep = 360f / (polygonSides*2); 
-        Debug.Log(angleStep + " " + polygonSides*2);
+        // Debug.Log(angleStep + " " + polygonSides*2);
         for (int i = 0; i < polygonSides; i++)
         {
-            Debug.Log(angleStep*i);
+            // Debug.Log(angleStep*i);
             possibleAngles.Add(angleStep * i);
         }
         timer = timerStartBuffer;
@@ -44,27 +42,27 @@ public class GeneratorLv1 : MonoBehaviour
 
             //Cambiarlo a un switch case
             if(randomPattern == 0){
-                Debug.Log("Spawning 2on2 ;");
+                // Debug.Log("Spawning 2on2 ;");
                 StartCoroutine(patt_2on2());
             }
             if(randomPattern == 1){
-                Debug.Log("Spawning 3c ;");
+                // Debug.Log("Spawning 3c ;");
                 StartCoroutine(patt_3c());
             }
             if(randomPattern == 2){
-                Debug.Log("Spawning alt2s ;");
+                // Debug.Log("Spawning alt2s ;");
                 StartCoroutine(patt_alt2s());
             }
             if(randomPattern == 3){
-                Debug.Log("Spawning Spiral;");
+                // Debug.Log("Spawning Spiral;");
                 StartCoroutine(patt_spiral());
             }
             if(randomPattern == 4){
-                Debug.Log("Spawning Big2sid;");
+                // Debug.Log("Spawning Big2sid;");
                 StartCoroutine(patt_Big2sid());
             }
             if(randomPattern == 5){
-                Debug.Log("Spawning rand ;");
+                // Debug.Log("Spawning rand ;");
                 StartCoroutine(patt_rand());
             }
             
