@@ -2,15 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenuHandler : MonoBehaviour
 {
     public AudioSource TitleAudio;
     public AudioSource Soundy;
 
+    public TextMeshProUGUI timertextHighScoreLv1;
+    public TextMeshProUGUI timertextHighScoreLv2;
+
     void Start(){
         TitleAudio.Play();
         Soundy.Play();
+
+        //Display Score
+        timertextHighScoreLv1.text = "Highest Time: " + PlayerPrefs.GetFloat("HighestTimeLv1", 0).ToString("0.00");
+        timertextHighScoreLv2.text = "Highest Time: " + PlayerPrefs.GetFloat("HighestTimeLv2", 0).ToString("0.00");
     }
 
     public void LevelSelection(){
