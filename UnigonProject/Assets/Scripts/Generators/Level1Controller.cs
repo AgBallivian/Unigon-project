@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class Level1Controller : MonoBehaviour
 {
@@ -27,6 +27,12 @@ public class Level1Controller : MonoBehaviour
 
     public AudioSource AudioClip1;
     public AudioSource AudioClip2;
+
+    public static bool ActualSceneisActive = false;
+
+    void Start(){
+        ActualSceneisActive = true;
+    }
 
     void FixedUpdate(){
         globalTimer += Time.deltaTime;

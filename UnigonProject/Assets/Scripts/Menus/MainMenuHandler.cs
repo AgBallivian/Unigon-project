@@ -17,6 +17,10 @@ public class MainMenuHandler : MonoBehaviour
         SceneManager.LoadScene("Level Selection");
     }
 
+    public void Tutorial(){
+        SceneManager.LoadScene("GameSceneTUT");
+    }
+
     public void Level1(){
         SceneManager.LoadScene("GameScene1");
     }

@@ -23,6 +23,9 @@ public class Player_Controller : MonoBehaviour
 
     public AudioSource flipSound;
 
+    //Go to Death Screen 
+    
+
     //Custom position for the player to rotate around (0,-3,0)
     Vector3 position = new Vector3(0, -3, 0);
     void Update(){
