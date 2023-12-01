@@ -73,46 +73,46 @@ public class Level2Controller : MonoBehaviour
         switch(stage){
             case 0: //0-15 seconds
             generatorLvL.patternchangeTime = 3.0f;
-            generatorLvL.patternSpeedTime = 1.1f;
-            generatorLvL.shrinkSpeed = 1.4f;
+            generatorLvL.patternSpeedTime = 0.85f;
+            generatorLvL.shrinkSpeed = 0.8f;
             break;
             case 1: //15-30 seconds
             generatorLvL.patternchangeTime = 3.0f;
-            generatorLvL.patternSpeedTime = 1.1f;
-            generatorLvL.shrinkSpeed = 1.4f;
+            generatorLvL.patternSpeedTime = 0.75f;
+            generatorLvL.shrinkSpeed = 0.9f;
             break;
             case 2: //30-45 seconds
             generatorLvL.patternchangeTime = 3.0f;
-            generatorLvL.patternSpeedTime = 0.9f;
-            generatorLvL.shrinkSpeed = 1.4f;
+            generatorLvL.patternSpeedTime = 0.65f;
+            generatorLvL.shrinkSpeed = 1.0f;
             break;
             case 3: //45-60 seconds
-            generatorLvL.patternchangeTime = 3.0f;
-            generatorLvL.patternSpeedTime = 0.9f;
-            generatorLvL.shrinkSpeed = 1.5f;
+            generatorLvL.patternchangeTime = 2.5f;
+            generatorLvL.patternSpeedTime = 0.65f;
+            generatorLvL.shrinkSpeed = 1.1f;
             break;
             case 4: //60-90 seconds TODO: Change to 90-120
-            generatorLvL.patternchangeTime = 6.0f;
-            generatorLvL.patternSpeedTime = 1.2f;
-            generatorLvL.shrinkSpeed = 1.5f;
+            generatorLvL.patternchangeTime = 2.5f;
+            generatorLvL.patternSpeedTime = 0.5f;
+            generatorLvL.shrinkSpeed = 0.9f;
 
             //Change colors
             colorChange.colorPairs[0].color1 = color1;
             colorChange.colorPairs[0].color2 = color2;
             break;
             case 5: //90-120 seconds
-            generatorLvL.patternchangeTime = 6.0f;
-            generatorLvL.patternSpeedTime = 1.2f;
-            generatorLvL.shrinkSpeed = 1.3f;
+            generatorLvL.patternchangeTime = 2.5f;
+            generatorLvL.patternSpeedTime = 0.5f;
+            generatorLvL.shrinkSpeed = 0.9f;
 
             //Change colors
             colorChange.colorPairs[0].color1 = color1;
             colorChange.colorPairs[0].color2 = color2;
             break;
             case 99: //120+ seconds
-            generatorLvL.patternchangeTime = 6.0f;
-            generatorLvL.patternSpeedTime = 1.2f;
-            generatorLvL.shrinkSpeed = 1.3f;
+            generatorLvL.patternchangeTime = 2.5f;
+            generatorLvL.patternSpeedTime = 0.45f;
+            generatorLvL.shrinkSpeed = 1.0f;
 
             //Change colors
             colorChange.colorPairs[0].color1 = color1;

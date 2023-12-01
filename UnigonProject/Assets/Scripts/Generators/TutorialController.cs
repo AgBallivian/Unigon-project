@@ -105,10 +105,10 @@ public class TutorialController : MonoBehaviour
             generatorLvL.patternchangeTime = 6.0f;
             generatorLvL.patternSpeedTime = 1.4f;
             generatorLvL.shrinkSpeed = 0.6f;
-            tutorialText.text = "With 120 Seconds you Complete the Stage! \n Good Luck!";
+            tutorialText.text = "With 120 Seconds you Complete the Tutorial! \n Good Luck!";
             break;
             case 5: //120+ seconds
-            SceneManager.LoadScene("GameScene1");
+            SceneManager.LoadScene("Main Menu");
             break;
             break;
         }

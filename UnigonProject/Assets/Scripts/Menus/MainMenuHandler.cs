@@ -21,6 +21,12 @@ public class MainMenuHandler : MonoBehaviour
         timertextHighScoreLv2.text = "Highest Time: " + PlayerPrefs.GetFloat("HighestTimeLv2", 0).ToString("0.00");
     }
 
+    public void ResetRecords(){
+        PlayerPrefs.DeleteAll();
+        timertextHighScoreLv1.text = "Highest Time: " + PlayerPrefs.GetFloat("HighestTimeLv1", 0).ToString("0.00");
+        timertextHighScoreLv2.text = "Highest Time: " + PlayerPrefs.GetFloat("HighestTimeLv2", 0).ToString("0.00");
+    }
+
     public void LevelSelection(){
         SceneManager.LoadScene("Level Selection");
     }

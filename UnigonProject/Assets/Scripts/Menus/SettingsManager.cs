@@ -14,6 +14,7 @@ public class SettingsManager : MonoBehaviour
     public Slider musicVolume;
     public Slider sfxVolume;
 
+    public Button resetRecordsButton;
     public Button applyButton;
 
     public Resolution[] resolution;
@@ -28,6 +29,7 @@ public class SettingsManager : MonoBehaviour
         musicVolume.onValueChanged.AddListener(delegate {OnMusicVolumeChange();});
         sfxVolume.onValueChanged.AddListener(delegate {OnSfxVolumeChange();});
         applyButton.onClick.AddListener(delegate {SaveAndApply();});
+        resetRecordsButton.onClick.AddListener(delegate {resetRecords();});
 
 
         resolution = Screen.resolutions;
@@ -36,6 +38,10 @@ public class SettingsManager : MonoBehaviour
         }
 
         LoadSettings();
+    }
+
+    public void resetRecords(){
+        PlayerPrefs.DeleteAll();
     }
 
     public void OnFullscreenToggle(){
@@ -52,7 +58,7 @@ public class SettingsManager : MonoBehaviour
 
     public void OnMusicVolumeChange(){
         musicSource.volume = gameSettings.musicVolume = musicVolume.value;
-        // gameSettings.musicVolume = musicVolume.value;
+        gameSettings.musicVolume = musicVolume.value;
     }
 
     public void OnSfxVolumeChange(){
