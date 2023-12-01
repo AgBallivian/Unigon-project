@@ -37,8 +37,8 @@ public class GeneratorLvL : MonoBehaviour
 
         if(timer >= patternchangeTime && patternFinish == true){
             //TODO: Optimizar le elecion random de pattrones (?)
-            int randomPattern = Random.Range(0, 6);
-            // int randomPattern = 4;
+            int randomPattern = Random.Range(0, 7);
+            // int randomPattern = 6;
 
             //Cambiarlo a un switch case
             if(randomPattern == 0){
@@ -64,6 +64,10 @@ public class GeneratorLvL : MonoBehaviour
             if(randomPattern == 5){
                 // Debug.Log("Spawning rand ;");
                 StartCoroutine(patt_rand());
+            }
+            if (randomPattern == 6){
+                // Debug.Log("Spawning 6BigMinic ;");
+                StartCoroutine(patt_6BigMinic());
             }
             
             
@@ -204,8 +208,8 @@ public class GeneratorLvL : MonoBehaviour
         int randomAngleIndex = Random.Range(0, possibleAngles.Count);
         float spawnAngle = possibleAngles[randomAngleIndex];
         Quaternion spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle); 
-        int wallscount = Random.Range(1, polygonSides);
-        for(int i = 0; i<3; i++){
+        int wallscount = Random.Range(3, polygonSides);
+        for(int i = 0; i<polygonSides; i++){
 
             spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle); 
             SpawnWall(polygonSides, wallscount, spawnRotation);
@@ -213,7 +217,7 @@ public class GeneratorLvL : MonoBehaviour
             yield return new WaitForSeconds(patternSpeedTime);
             randomAngleIndex = Random.Range(0, possibleAngles.Count);
             spawnAngle = possibleAngles[randomAngleIndex];
-            wallscount = Random.Range(1, polygonSides);
+            wallscount = Random.Range(3, polygonSides);
         }
 
         patternFinish = true;
@@ -245,6 +249,28 @@ public class GeneratorLvL : MonoBehaviour
         }
 
         patternFinish = true;   
+    }
+
+    private IEnumerator patt_6BigMinic()
+    {
+        patternFinish = false;
+        // Choose a random angle from the list
+        int randomAngleIndex = Random.Range(0, possibleAngles.Count);
+        float spawnAngle = possibleAngles[randomAngleIndex];
+        // Rotate around z-axis
+        Quaternion spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle);
+
+        for(int i = 0; i<6; i++){
+            spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle); 
+            SpawnWall(polygonSides, polygonSides-2, spawnRotation);
+            yield return new WaitForSeconds(patternSpeedTime);
+            spawnRotation = Quaternion.Euler(0f, 0f, spawnAngle+90f); 
+            SpawnWall(polygonSides, polygonSides-2, spawnRotation);
+            yield return new WaitForSeconds(patternSpeedTime);
+        }
+
+        //Confirms that pattern ended so next can be spawned  
+        patternFinish = true;
     }
 
     //Spawn the wall function 

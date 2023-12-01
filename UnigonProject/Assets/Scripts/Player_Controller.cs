@@ -21,6 +21,8 @@ public class Player_Controller : MonoBehaviour
 
     float movement;
 
+    public AudioSource flipSound;
+
     //Custom position for the player to rotate around (0,-3,0)
     Vector3 position = new Vector3(0, -3, 0);
     void Update(){
@@ -52,6 +54,7 @@ public class Player_Controller : MonoBehaviour
     void flip(){
         //flip the player to the other side of the rotate point
         transform.RotateAround(position, Vector3.forward, 180);
+        flipSound.Play();
     }
 
     //Display the health system
@@ -81,7 +84,8 @@ public class Player_Controller : MonoBehaviour
             death();
         }
     }
-
+    
+    
     public void death(){
         //placeholder for death animation 
         Debug.Log("Player is dead");

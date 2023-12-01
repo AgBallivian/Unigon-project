@@ -18,8 +18,13 @@ public class MainMenuHandler : MonoBehaviour
     }
 
     public void Level1(){
-        // SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("GameScene1");
     }
+
+    public void Level2(){
+        SceneManager.LoadScene("GameScene2");
+    }
+    
     public void titleScreen(){
         SceneManager.LoadScene("Main Menu");
     }

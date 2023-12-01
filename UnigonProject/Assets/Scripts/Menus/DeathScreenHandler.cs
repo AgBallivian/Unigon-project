@@ -12,6 +12,8 @@ public class DeathScreenHandler : MonoBehaviour
         StartCoroutine(camera.GetComponent<CameraController>().Shaking());
     }
     public void PlayGame(){
+
+        //TODO: FIX THIS SO IT GOES TO THE CORRECT LEVEL.
         SceneManager.LoadScene("GameScene1");
     }
     public void QuitMenu(){
